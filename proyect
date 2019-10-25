@@ -1,0 +1,25 @@
+#ifndef LIBROS_H
+#define LIBROS_H
+
+
+class Libros
+{
+    public:
+        Libros();
+        void estilos()
+        {
+            cout << "1. Romace"<< endl;
+            cout << "2. Gotico"<< endl;
+            cout << "3. Fantasia" << endl;
+            cout << "4. Terror" << endl;
+            cout << "5. Tragedia" << endl;
+            
+            
+        }
+
+    protected:
+
+    private:
+};
+
+#endif // LIBROS_H
