@@ -1,25 +1,55 @@
-#ifndef LIBROS_H
-#define LIBROS_H
+#include <iostream>
+#include <string>
+using namespace std;
 
-
-class Libros
-{
-    public:
-        Libros();
-        void estilos()
-        {
-            cout << "1. Romace"<< endl;
-            cout << "2. Gotico"<< endl;
-            cout << "3. Fantasia" << endl;
-            cout << "4. Terror" << endl;
-            cout << "5. Tragedia" << endl;
-            
-            
-        }
-
-    protected:
-
-    private:
+class Empleado {
+private:
+    string nombre;
+    string apellido;
+    double salario;
+    int canti;
+public:
+    Empleado(int);
+    void mostrar_datos();
+    Empleado(string,string);
+    Empleado(double);
+    void salar();
+    void mostrar_salario();
+    void salario_anual();
 };
 
-#endif // LIBROS_H
+Empleado::Empleado(string _nombre,string _apellido)
+{
+    nombre = _nombre;
+    apellido = _apellido;
+}
+Empleado::Empleado(double _salario)
+{
+    salario = _salario;
+}
+void Empleado::mostrar_datos()
+{
+    cout << nombre << " " << apellido << " --> ";
+}
+void Empleado::salar()
+{
+   if (salario < 0){
+    cout << 0;
+   }
+   else{
+   cout << salario << endl;
+}
+}
+
+int main()
+{
+    Empleado name_lastname("naiara","mena");
+    Empleado salari(-1548.25);
+    Empleado second("gabriel","pinto");
+    Empleado sal(14897.215);
+    name_lastname.mostrar_datos();
+    salari.salar();
+    second.mostrar_datos();
+    sal.salar();
+    return 0;
+}
