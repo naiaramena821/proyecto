@@ -1,0 +1,86 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+class Estudiante
+{
+    private:
+        string nombre;
+        string apellido;
+        string codigo;
+    public:
+        Estudiante(string,string,string);
+        void mostrar_datos();
+};
+Estudiante::Estudiante(string _nombre,string _apellido,string _codigo)
+{
+    nombre = _nombre;
+    apellido = _apellido;
+    codigo = _codigo;
+}
+void Estudiante::mostrar_datos()
+{
+    cout << nombre << " " << apellido << ": " << codigo << endl;
+}
+
+class Curso
+{
+   private:
+       string name;
+       string code;
+       string *alumnos;
+       int cant_alumnos;
+   public:
+        void modificar_datos();
+        Cursos(string,string,int);
+        Curso();
+        void mostrar_datos();
+};
+Curso::Cursos(string _name,string _code,int _cantidadal)
+{
+    name = _name;
+    code = _code;
+    cant_alumnos = _cantidadal;
+}
+ Curso::Curso()
+{
+    cout <<"ingrese el nombre del curso: ";
+    cin >> name;
+    cout << "codigo del curso: ";
+    cin >> code;
+    cout << name << "(" << code << ")" <<endl;
+}
+void Curso::mostrar_datos()
+{
+
+    cout << "ingrese la cantidad de alumnos: ";
+
+}
+void Curso::modificar_datos()
+{
+    int cantidad;
+    string nm;
+    string ape;
+    string cod;
+    cin >> cantidad;
+    for(int i=1;i<=cantidad;i++){
+        cout << "nombre: ";
+        cin >> nm;
+        cout << "apellido: ";
+        cin >> ape;
+        cout << "codigo: ";
+        cin >> cod;
+    }
+
+}
+
+int main()
+{
+    Estudiante alumno ("Naiara","Mena","AWYUO");
+    Estudiante companiero ("Gabriel","Tejada","RTOPS");
+    alumno.mostrar_datos();
+    companiero.mostrar_datos();
+    Curso curse;
+    curse.mostrar_datos();
+    curse.modificar_datos();
+}
