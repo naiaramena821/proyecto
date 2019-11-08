@@ -8,8 +8,10 @@ class Estudiante
         string nombre;
         string apellido;
         string codigo;
+        int cantidad_alumnos;
     public:
         Estudiante(string,string,string);
+        bool quiere_o_no();
         void mostrar_datos();
 };
 Estudiante::Estudiante(string _nombre,string _apellido,string _codigo)
@@ -18,69 +20,75 @@ Estudiante::Estudiante(string _nombre,string _apellido,string _codigo)
     apellido = _apellido;
     codigo = _codigo;
 }
+bool Estudiante::quiere_o_no()
+{
+    string pedir ;
+    cout << "quieres mostrar los datos?" << endl;
+    cout << "yes or no: ";cin >> pedir;
+    if (pedir == "yes"){
+        return true;
+    }
+    else{
+        return false;
+    }
+}
 void Estudiante::mostrar_datos()
 {
     cout << nombre << " " << apellido << ": " << codigo << endl;
 }
+
 
 class Curso
 {
    private:
        string name;
        string code;
-       string *alumnos;
        int cant_alumnos;
    public:
-        void modificar_datos();
-        Cursos(string,string,int);
-        Curso();
-        void mostrar_datos();
+        Curso(string,string);
+        Curso(int);
+        void muestra_datos();
+        void aumentar_uno();
 };
-Curso::Cursos(string _name,string _code,int _cantidadal)
+Curso::Curso(string _name,string _code)
 {
     name = _name;
     code = _code;
-    cant_alumnos = _cantidadal;
 }
- Curso::Curso()
+Curso::Curso(int canAlumnos)
 {
-    cout <<"ingrese el nombre del curso: ";
-    cin >> name;
-    cout << "codigo del curso: ";
-    cin >> code;
-    cout << name << "(" << code << ")" <<endl;
+    cant_alumnos = canAlumnos;
 }
-void Curso::mostrar_datos()
+void Curso::muestra_datos()
 {
-
-    cout << "ingrese la cantidad de alumnos: ";
-
+    cout << name << " " << code << "--> ";
+    cout << cant_alumnos << endl;
 }
-void Curso::modificar_datos()
+
+void Curso::aumentar_uno()
 {
-    int cantidad;
-    string nm;
-    string ape;
-    string cod;
-    cin >> cantidad;
-    for(int i=1;i<=cantidad;i++){
-        cout << "nombre: ";
-        cin >> nm;
-        cout << "apellido: ";
-        cin >> ape;
-        cout << "codigo: ";
-        cin >> cod;
-    }
-
+    cant_alumnos=cant_alumnos+1;
+    cout << "nueva cantidad: " << cant_alumnos;
 }
-
 int main()
 {
-    Estudiante alumno ("Naiara","Mena","AWYUO");
-    Estudiante companiero ("Gabriel","Tejada","RTOPS");
-    alumno.mostrar_datos();
-    companiero.mostrar_datos();
-    Curso curse;
-    curse.mostrar_datos();
-    curse.modificar_datos();
+    Estudiante a ("Naiara","Mena","AWYUO");
+    Estudiante c ("Gabriel","Tejada","RTOPS");
+    if(a.quiere_o_no())
+    {
+        a.mostrar_datos();
+        c.mostrar_datos();
+    }
+     cout << endl;
+    Curso curse("lenguaje","AGHJK");
+    Curso nume(10);
+    curse.muestra_datos();
+    nume.muestra_datos();
+    nume.aumentar_uno();
+    cout << endl;
+    cout << endl;
+    Estudiante *ptr = &a;
+    ptr -> mostrar_datos();
+    Estudiante *pt = &c;
+    pt -> mostrar_datos();
 }
