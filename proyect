@@ -9,13 +9,11 @@ private:
     double salario;
     int canti;
 public:
-    Empleado(int);
-    void mostrar_datos();
     Empleado(string,string);
     Empleado(double);
-    void salar();
-    void mostrar_salario();
-    void salario_anual();
+    bool mostrar_o_no();
+    void mostrar_datos();
+    double salar();
     void ordenar_nombres();
 };
 
@@ -29,40 +27,53 @@ Empleado::Empleado(double _salario)
     salario = _salario;
 }
 
+bool Empleado::mostrar_o_no()
+{
+    string pedir ;
+    cout << "quieres mostrar los datos?" << endl;
+    cout << "yes or no: ";cin >> pedir;
+    if (pedir == "yes"){
+        return true;
+    }
+    else{
+        return false;
+    }
+}
+double Empleado::salar()
+{
+   if (salario < 0){
+    cout << 0 << endl;
+   }
+   else{
+    int x= salario * 0.1;
+    cout << salario * 12.0 - x << endl;;
+}
+}
 void Empleado::mostrar_datos()
 {
     cout << endl;
     cout << nombre << " " << apellido << " --> ";
 }
-
-void Empleado::salar()
-{
-   if (salario < 0){
-    cout << 0;
-   }
-   else{
-    int x= salario * 0.1;
-    cout << salario * 12.0 - x << endl;
-}
-}
 void Empleado::ordenar_nombres()
 {
-  for (int i=0,i<nombre,i++){
     
-  }
-  for(int j=0,j<apellido,j++){
-    
-  }
 }
 int main()
 {
-    Empleado name_lastname("naiara","mena");
-    Empleado salari(-1548.25);
-    Empleado second("gabriel","pinto");
-    Empleado sal(1400.20);
-    name_lastname.mostrar_datos();
-    salari.salar();
-    second.mostrar_datos();
-    sal.salar();
+    Empleado e("naiara","mena");
+    Empleado sa(-1548.25);
+    Empleado se("gabriel","pinto");
+    Empleado sal(1400.2);
+    if(e.mostrar_o_no())
+    {
+        e.mostrar_datos();
+        sa.salar();
+        se.mostrar_datos();
+        sal.salar();
+    }
+
+
     return 0;
 }
+
+
