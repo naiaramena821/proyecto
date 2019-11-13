@@ -14,7 +14,7 @@ public:
     bool mostrar_o_no();
     void mostrar_datos();
     double salar();
-    void ordenar_nombres();
+    void ordenar(string);
 };
 
 Empleado::Empleado(string _nombre,string _apellido)
@@ -39,6 +39,7 @@ bool Empleado::mostrar_o_no()
         return false;
     }
 }
+
 double Empleado::salar()
 {
    if (salario < 0){
@@ -49,20 +50,33 @@ double Empleado::salar()
     cout << salario * 12.0 - x << endl;;
 }
 }
+
 void Empleado::mostrar_datos()
 {
     cout << endl;
     cout << nombre << " " << apellido << " --> ";
 }
-void Empleado::ordenar_nombres()
+
+void Empleado::ordenar(string ape[])
 {
-    
+    string aux;
+    for(int i=1; i < ape[apellido]; i++){
+        for (int j=0; j < ape[apellido-i]; j++){
+            if(ape[apellido]>ape[apellido+1])
+            {
+                aux = ape[apellido];
+                ape[apellido] = ape[apellido+1];
+                ape [apellido] = aux;
+            }
+        }
+    }
 }
+
 int main()
 {
-    Empleado e("naiara","mena");
+    Empleado e("Naiara","Mena");
     Empleado sa(-1548.25);
-    Empleado se("gabriel","pinto");
+    Empleado se("Gabriel","Pinto");
     Empleado sal(1400.2);
     if(e.mostrar_o_no())
     {
@@ -71,9 +85,7 @@ int main()
         se.mostrar_datos();
         sal.salar();
     }
-
-
+    Empleado lis(string a[]={"Mena","Pinto"});
+    lis.ordenar();
     return 0;
 }
-
-
